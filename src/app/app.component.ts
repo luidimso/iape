@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
+import { Nav, Platform, Events, Slides } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -9,9 +9,9 @@ import { Storage } from '@ionic/storage';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+  @ViewChild('switcher') slides: Slides;
 
   rootPage:any;
-
   usuario:any = [];
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public storage: Storage, public events: Events) {
@@ -23,10 +23,10 @@ export class MyApp {
         if (data != null && data != ''){
           this.usuario = JSON.parse(data);
           if(this.usuario.hasOwnProperty("crm")){
-            this.rootPage = "HomePage";
+            this.rootPage = "DstPage";
           }
           else{
-            this.rootPage = "HomePage";
+            this.rootPage = "DstPage";
           }
         }
         else {
@@ -38,5 +38,18 @@ export class MyApp {
         this.usuario = u;
       });
     });
+  }
+
+  menuOpened() {
+    this.slides.update();
+  }
+
+  next() {
+    this.slides.slideNext();
+  }
+
+  onDst(page:number) {
+    this.storage.set('dstPage', page);
+    this.nav.setRoot('DstPage');
   }
 }

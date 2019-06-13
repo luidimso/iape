@@ -1,8 +1,13 @@
 .scroll-content {
    overflow-y: auto !important;
+   padding: 0 !important;
 }
 
 .list-md :not(.input-has-focus):last-child:not(.item-input-has-focus).item-input.ng-valid.item-input-has-value, .list-md :not(.input-has-focus):last-child:not(.item-input-has-focus).item-input.ng-valid.input-has-value{
   border-bottom-color: #dedede;
   box-shadow: none;
+}
+
+ion-slides{
+  height: auto !important;
 }

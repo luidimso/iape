@@ -1,22 +1,38 @@
-<ion-menu [content]="content" persistent="true" swipeEnabled="false">
+<ion-menu [content]="content" persistent="true" (ionOpen)="menuOpened()">
   <ion-header>
-      <ion-toolbar>
-        <ion-title>{{usuario.nome}}</ion-title>
-      </ion-toolbar>
-    </ion-header>
+    <ion-toolbar color="blue">
+      <ion-title>{{usuario.nome}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-    <ion-content>
-      <ion-list>
-        <button ion-item menuClose (click)="onDst()"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Distúrbios, Síndromes e Transtornos</button>
-        <button ion-item menuClose (click)="onItens(usuario)"><ion-icon name="md-cube"></ion-icon>&nbsp;&nbsp;Itens Salvos</button>
-        <button ion-item menuClose (click)="onConfig(usuario)"><ion-icon name="md-settings"></ion-icon>&nbsp;&nbsp;&nbsp;Configurações</button>
-        <button ion-item menuClose (click)="onSobre()"><ion-icon name="md-information-circle"></ion-icon>&nbsp;&nbsp;&nbsp;Sobre a IAPE</button>
-        <button ion-item menuClose (click)="onConvidar()"><ion-icon name="md-share"></ion-icon>&nbsp;&nbsp;&nbsp;Convidar</button>
-        <button ion-item menuClose (click)="onDuvidas()"><ion-icon name="md-help"></ion-icon>&nbsp;&nbsp;&nbsp;Dúvidas</button>
-        <button ion-item menuClose (click)="onFeedback()"><ion-icon name="ios-alert-outline"></ion-icon>&nbsp;&nbsp;&nbsp;Feedback</button>
-        <button ion-item menuClose (click)="sair()"><ion-icon name="md-log-out"></ion-icon>&nbsp;&nbsp;&nbsp;Sair</button>
-      </ion-list>
-    </ion-content>
+  <ion-content>
+    <ion-slides #switcher class="swiper-no-swiping">
+      <ion-slide>
+        <ion-list>
+          <button ion-item (click)="next()"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Distúrbios, Síndromes e Transtornos</button>
+          <button ion-item menuClose (click)="onItens(usuario)"><ion-icon name="md-cube"></ion-icon>&nbsp;&nbsp;Itens Salvos</button>
+          <button ion-item menuClose (click)="onConfig(usuario)"><ion-icon name="md-settings"></ion-icon>&nbsp;&nbsp;&nbsp;Configurações</button>
+          <button ion-item menuClose (click)="onSobre()"><ion-icon name="md-information-circle"></ion-icon>&nbsp;&nbsp;&nbsp;Sobre a IAPE</button>
+          <button ion-item menuClose (click)="onConvidar()"><ion-icon name="md-share"></ion-icon>&nbsp;&nbsp;&nbsp;Convidar</button>
+          <button ion-item menuClose (click)="onDuvidas()"><ion-icon name="md-help"></ion-icon>&nbsp;&nbsp;&nbsp;Dúvidas</button>
+          <button ion-item menuClose (click)="onFeedback()"><ion-icon name="ios-alert-outline"></ion-icon>&nbsp;&nbsp;&nbsp;Feedback</button>
+          <button ion-item menuClose (click)="sair()"><ion-icon name="md-log-out"></ion-icon>&nbsp;&nbsp;&nbsp;Sair</button>
+        </ion-list>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-list>
+          <button ion-item menuClose (click)="onDst(0)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Síndrome de Down</button>
+          <button ion-item menuClose (click)="onDst(1)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Síndrome de Asperger</button>
+          <button ion-item menuClose (click)="onDst(2)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Síndrome de Williams</button>
+          <button ion-item menuClose (click)="onDst(3)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Síndrome de Rett</button>
+          <button ion-item menuClose (click)="onDst(4)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Autismo</button>
+          <button ion-item menuClose (click)="onDst(5)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;TDH</button>
+          <button ion-item menuClose (click)="onDst(6)"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Paralisia cerebral</button>
+        </ion-list>
+      </ion-slide>
+    </ion-slides>
+  </ion-content>
 </ion-menu>
 
 <ion-nav [root]="rootPage" #content></ion-nav>
