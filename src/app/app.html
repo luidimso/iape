@@ -1,19 +1,22 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" persistent="true" swipeEnabled="false">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-toolbar>
+        <ion-title>{{usuario.nome}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
-
+    <ion-content>
+      <ion-list>
+        <button ion-item menuClose (click)="onDst()"><ion-icon name="md-hand"></ion-icon>&nbsp;&nbsp;&nbsp;Distúrbios, Síndromes e Transtornos</button>
+        <button ion-item menuClose (click)="onItens(usuario)"><ion-icon name="md-cube"></ion-icon>&nbsp;&nbsp;Itens Salvos</button>
+        <button ion-item menuClose (click)="onConfig(usuario)"><ion-icon name="md-settings"></ion-icon>&nbsp;&nbsp;&nbsp;Configurações</button>
+        <button ion-item menuClose (click)="onSobre()"><ion-icon name="md-information-circle"></ion-icon>&nbsp;&nbsp;&nbsp;Sobre a IAPE</button>
+        <button ion-item menuClose (click)="onConvidar()"><ion-icon name="md-share"></ion-icon>&nbsp;&nbsp;&nbsp;Convidar</button>
+        <button ion-item menuClose (click)="onDuvidas()"><ion-icon name="md-help"></ion-icon>&nbsp;&nbsp;&nbsp;Dúvidas</button>
+        <button ion-item menuClose (click)="onFeedback()"><ion-icon name="ios-alert-outline"></ion-icon>&nbsp;&nbsp;&nbsp;Feedback</button>
+        <button ion-item menuClose (click)="sair()"><ion-icon name="md-log-out"></ion-icon>&nbsp;&nbsp;&nbsp;Sair</button>
+      </ion-list>
+    </ion-content>
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content></ion-nav>

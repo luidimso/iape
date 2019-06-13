@@ -1,0 +1,80 @@
+$placeholder-size: "20px";
+page-cadastro-user {
+  .button-md{
+    box-shadow: none;
+  }
+  
+  #foto_btn{
+    margin: 20px auto;
+  }
+
+  #foto_add ion-icon{
+    font-size: 150px;
+  }
+
+  #foto_added{
+    margin: 20px auto;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  #foto_added img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: auto;
+    min-height: 100%;
+    width: auto;
+    min-width: 100%;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+  }
+
+  .label{
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .text-input .text-input-md{
+    margin-bottom: 0;
+    color: #222;
+  }
+
+  .text-input::-moz-placeholder {
+    color: #222;
+    font-size: $placeholder-size;
+  }
+  .text-input::-ms-input-placeholder {
+    color: #222;
+    font-size: $placeholder-size;
+  }
+  .text-input::-webkit-input-placeholder {
+    color: #222;
+    font-size: $placeholder-size;
+  }
+
+  #sexo_label {
+    margin-bottom: 10px;
+  }
+
+  #sexo_lb {
+    font-size: 16px;
+    color: #222;
+  }
+
+  .select-icon-inner{
+    color: #222 !important;
+  }
+
+  .select-text{
+    color: #222;
+  }
+
+  .text-input[disabled] {
+    opacity: 0.7;
+  }
+}

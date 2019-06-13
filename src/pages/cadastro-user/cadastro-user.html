@@ -1,0 +1,74 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton color="blue">
+    <button ion-button icon-only start color="blue" (click)="onLoginUser()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3 text-center>Cadastre-se</h3>
+
+  <ng-container *ngIf="myphoto == ''">
+    <p id="foto_add" align="center" (click)="getImage()"><ion-icon name="md-camera"></ion-icon></p>
+  </ng-container>
+
+  <ng-container *ngIf="myphoto != ''">
+    <div id="foto_added" align="center" (click)="getImage()"><img src="{{ myphoto }}"></div>
+  </ng-container>
+
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-person"></ion-icon></ion-label>
+    <ion-input #nome type="text" placeholder="Nome" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-mail"></ion-icon></ion-label>
+    <ion-input #email type="email" placeholder="E-mail" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-calendar"></ion-icon></ion-label>
+    <ion-input #dt_nascimento type="tel" placeholder="Data de nascimento" class="text-input" [brmasker]="{mask:'00/00/0000', len:10}"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label id="sexo_label"><ion-icon name="md-people"></ion-icon><span id="sexo_lb">&nbsp;&nbsp;&nbsp;&nbsp;Sexo</span></ion-label>
+    <ion-select #sexo>
+      <ion-option value="f">Feminino</ion-option>
+      <ion-option value="m">Masculino</ion-option>
+      <ion-option value="o">Outro</ion-option>
+    </ion-select>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-pin"></ion-icon></ion-label>
+    <ion-input [(ngModel)]="endereco.cep" type="tel" placeholder="CEP" class="text-input" (ionChange)='onChange(endereco.cep.length)' [brmasker]="{mask:'00000-000', len:9}"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-pin"></ion-icon></ion-label>
+    <ion-input [(ngModel)]="endereco.bairro" type="text" placeholder="Bairro" class="text-input" disabled="true"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-pin"></ion-icon></ion-label>
+    <ion-input [(ngModel)]="endereco.cidade" type="text" placeholder="Cidade" class="text-input" disabled="true"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-pin"></ion-icon></ion-label>
+    <ion-input [(ngModel)]="endereco.uf" type="text" placeholder="UF" class="text-input" disabled="true"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-lock"></ion-icon></ion-label>
+    <ion-input #senha type="password" placeholder="Senha" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-lock"></ion-icon></ion-label>
+    <ion-input #senhaConf type="password" placeholder="Confirme a senha" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <button ion-button block (click)="cadastrar(nome.value, email.value, dt_nascimento.value, sexo.value, senha.value, senhaConf.value)" color="blue">Cadastrar</button>
+</ion-content>

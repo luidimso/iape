@@ -1,10 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { Storage } from '@ionic/storage';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,33 +10,33 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage:any;
 
-  pages: Array<{title: string, component: any}>;
+  usuario:any = [];
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public storage: Storage, public events: Events) {
+    platform.ready().then(() => {
+      statusBar.backgroundColorByHexString('#5CE1E6');
+      splashScreen.hide();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
+      this.storage.get('usuario_logado').then((data) => {
+        if (data != null && data != ''){
+          this.usuario = JSON.parse(data);
+          if(this.usuario.hasOwnProperty("crm")){
+            this.rootPage = "HomePage";
+          }
+          else{
+            this.rootPage = "HomePage";
+          }
+        }
+        else {
+          this.rootPage = "HomePage";
+        }
+      });
 
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      events.subscribe('usuario_logado:changed', (u) => {
+        this.usuario = u;
+      });
     });
-  }
-
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
   }
 }

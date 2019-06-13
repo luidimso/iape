@@ -1,0 +1,22 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton color="blue">
+    <button ion-button icon-only start color="blue" (click)="onHome()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3 text-center>Fazer login no IAPE</h3>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-mail"></ion-icon></ion-label>
+    <ion-input #email type="email" placeholder="E-mail" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <ion-item>
+    <ion-label><ion-icon name="md-lock"></ion-icon></ion-label>
+    <ion-input #senha type="password" placeholder="Senha" class="text-input"></ion-input>
+  </ion-item>
+  <br><br>
+  <button ion-button block (click)="logar(email.value, senha.value)" color="blue">Login</button>
+  <button ion-button block outline color="blue" id="cadastrar-btn" (click)="onCadastrarUser()">Cadastre-se</button>
+</ion-content>
